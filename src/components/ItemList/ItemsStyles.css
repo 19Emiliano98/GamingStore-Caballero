@@ -1,0 +1,16 @@
+.CatalogGrid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    margin-top: 5vw;
+    margin-left: 14vw;
+}
+.Catalog{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 140px;
+}
+.Catalog img{
+    width: 200px;
+}
