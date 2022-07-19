@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { act } from "react-dom/test-utils";
 
 export const cartContext = createContext();
 const { Provider } = cartContext;
@@ -39,6 +40,12 @@ const CartCustomProvider = ({ children }) => {
     setProducts([]);
     setQtyProducts(0);
   };
+  const totalPrice = () => {
+    return cartContext.reduce((prev, act) => prev + act.qty * act.price, 0)
+  }
+  const totalProducts = () => cartContext.reduce((acumulador, productoActual) => acumulador + productoActual.qty, 0)
+
+  const removeProduct = (id) => setProducts(products.filter(product => product.id !== id))
 
   const contextValues = {
     products,
@@ -46,6 +53,9 @@ const CartCustomProvider = ({ children }) => {
     deleteProduct,
     qtyProducts,
     clear,
+    totalPrice,
+    totalProducts,
+    removeProduct
   }
   return <Provider value={contextValues}>{children}</Provider>;
 };

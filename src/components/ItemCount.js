@@ -32,7 +32,7 @@ const switching = () =>{
           <button disabled={cont >= stock} onClick={increaseCont} className="button-counter">+</button>
           <button disabled={stock <= 0} onClick={() => switching()} className="button-addcart">Finalizar</button>
         </div>
-        : <Link to={"/cart/"}><button className="button-addcart">Agregar al carrito</button></Link>
+        : <Link to={"/cart/"}><button className="button-addcart">Terminar mi compra</button></Link>
       }
     </>
   )
