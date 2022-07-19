@@ -41,9 +41,9 @@ const CartCustomProvider = ({ children }) => {
     setQtyProducts(0);
   };
   const totalPrice = () => {
-    return cartContext.reduce((prev, act) => prev + act.qty * act.price, 0)
+    return products.reduce((prev, act) => prev + act.qty * act.price, 0)
   }
-  const totalProducts = () => cartContext.reduce((acumulador, productoActual) => acumulador + productoActual.qty, 0)
+  const totalProducts = () => products.reduce((acumulador, productoActual) => acumulador + productoActual.qty, 0)
 
   const removeProduct = (id) => setProducts(products.filter(product => product.id !== id))
 
