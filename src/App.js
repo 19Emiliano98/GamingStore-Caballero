@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import './firebase/firebase'
+
 /* Javascripts */
 import Navbar from "./components/Navbar/Navbar";
 import ItemListContainer from "./components/ItemList/ItemListContainer";

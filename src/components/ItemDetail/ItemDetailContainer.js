@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
 import { useParams } from 'react-router-dom';
-import { getProds } from '../mock/products';
+//import { getProds } from '../mock/products';
 import ItemDetail from './ItemDetail.js';
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState([]);
+    const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
-
     const {id} = useParams()
-
+    
     useEffect(() => {
-        getProds()
-        .then((res) => {
-                const productoSeleccionado = res.find(element => element.id === parseInt(id))
-                setProduct(productoSeleccionado)
-            })
-            .catch((error) => console.log(error))
-            .finally(() => {
-                setLoading(false);
-            });
+        const querydb = getFirestore();
+        const queryDoc = doc(querydb, 'products', id)
+        getDoc(queryDoc)
+            .then(res => setData({ id:res.id, ...res.data() }))
     }, [id]);
 
     return (
@@ -27,7 +22,7 @@ const ItemDetailContainer = () => {
                 <h2>Cargando...</h2>
             ) : (
                 <>
-                    <ItemDetail product={product} />
+                    <ItemDetail product={data} />
                 </>
             )}
         </div>
