@@ -9,10 +9,10 @@ const ItemDetailContainer = () => {
     const {id} = useParams()
     
     useEffect(() => {
-        const queryDoc = doc(getFirestore(), 'productos', 'd9TwQbUly079zPtMR5FK')
+        const queryDoc = doc(getFirestore(), 'productos', id)
         getDoc(queryDoc)
-            .then(res => console.log( res ))
-    }, []);
+            .then(res => setData({ id: res.id, ...res.data() }))
+    }, [id]);
 
     return (
         <>
