@@ -10,7 +10,7 @@ const CartWidget = () => {
     return (
         <>
             {
-                !qtyProducts == 0 
+                !qtyProducts === 0 
                 ?
                 <>
                     <BiCartAlt />

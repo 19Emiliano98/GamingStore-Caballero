@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect } from "react";
-import { act } from "react-dom/test-utils";
 
 export const cartContext = createContext();
 const { Provider } = cartContext;
