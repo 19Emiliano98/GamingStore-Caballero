@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
 import { cartContext } from '../Context/CartContext';
 import {Link} from 'react-router-dom';
 import ItemCart from './ItemCart';
@@ -7,7 +7,7 @@ import ItemCart from './ItemCart';
 import "./CartStyles.css"
 
 const Cart = () => {
-
+  
     const { products, qtyProducts, totalPrice } = useContext(cartContext)
     
     const order = {
@@ -15,10 +15,11 @@ const Cart = () => {
         name: 'Pablo',
         email: 'Pablo@gmail.com',
         phone: '1234',
-        adress: 'asd',
+        adress: 'asd'
       },
-      items: products.map(product => ({id: product.id, title: product.name, price: product.price, quantity: product.quantity})),
+      items: products.map(product => ({id: product.id, title: product.name, price: product.price, quantity: product.qty})),
       total: totalPrice(),
+      date: serverTimestamp(),
     }
 
     const handleClick = () => {
